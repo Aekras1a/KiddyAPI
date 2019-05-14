@@ -20,7 +20,7 @@ namespace KiddyAPI.Steal
         /// </summary>
         /// <param name="cipherTextBytes">Пароль, полученный из БД</param>
         /// <param name="entropyBytes">Энтропия(null)</param>
-        /// <returns>Возвращает массив байтов</returns>
+        /// <returns>Возвращает массив байтов </returns>
         public static byte[] DecryptBrowsers(byte[] cipherTextBytes, byte[] entropyBytes = null)
         {
             // Тут создаем BLOB'ы
