@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace KiddyAPI.Protect
 {
+    /// <summary>
+    /// Отключаем защитника Windows, через реестр
+    /// </summary>
     class DisableDefender
     {
         /// <summary>
