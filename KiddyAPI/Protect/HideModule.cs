@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -107,6 +108,19 @@ namespace KiddyAPI.Protect
                 @"Software\Microsoft\Windows\CurrentVersion\Policies\System");
             key.SetValue("DisableTaskMgr", enable ? 0 : 1,
                 Microsoft.Win32.RegistryValueKind.DWord);
+        }
+        /// <summary>
+        /// Добавление в автозагрузку
+        /// </summary>
+        /// <param name="name">Имя программы отображаемое в реестре</param>
+        /// <param name="path">Путь до программы</param>
+        public static void SetAutorun(string name, string path)
+        {
+            using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+            using (var key = baseKey.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
+            {
+                key.SetValue(name, path);
+            }
         }
     }
 }
