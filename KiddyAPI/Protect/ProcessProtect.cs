@@ -13,7 +13,7 @@ namespace KiddyAPI.Protect
     /// <summary>
     /// Класс для защиты процесса от закрытия в Таск Менеджере
     /// </summary>
-    class ProcessProtect
+    public class ProcessProtect
     {
         private static RawSecurityDescriptor GetProcessSecurityDescriptor(IntPtr processHandle)
         {

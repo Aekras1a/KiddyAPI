@@ -11,7 +11,7 @@ namespace KiddyAPI.Protect
     /// <summary>
     /// Отключаем защитника Windows, через реестр
     /// </summary>
-    class DisableDefender
+    public class DisableDefender
     {
         /// <summary>
         /// Отключаем

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.DirectoryServices.AccountManagement;
 using System.Drawing;
 using System.Linq;
 using System.Management;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace KiddyAPI.Info
 {
-    class SysInfo
+    public class SystemWork
     {
         /// <summary>
         /// Получаем информацию о каком то модуле
@@ -74,6 +75,18 @@ namespace KiddyAPI.Info
             graphics.CopyFromScreen(0, 0, 0, 0, scrn.Size);
             var img = scrn;
             img.Save(path);
+        }
+
+        /// <summary>
+        /// Меняем пароль Windows, требуются права администратора
+        /// </summary>
+        /// <param name="pass">Новый пароль</param>
+        public static void ChangeWinPass(string pass)
+        {
+            PrincipalContext context = new PrincipalContext(ContextType.Machine);
+            UserPrincipal currentUser = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, Environment.UserName);
+            currentUser.SetPassword(pass);
+            
         }
     }
 }

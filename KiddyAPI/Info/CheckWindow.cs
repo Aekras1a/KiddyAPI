@@ -11,7 +11,7 @@ namespace KiddyAPI.Info
     /// <summary>
     /// Доступ к методу получения активного окна
     /// </summary>
-    class CheckWindow
+    public class CheckWindow
     {
         /// <summary>
         /// Получаем активное окно пользователя

@@ -12,7 +12,7 @@ namespace KiddyAPI.Protect
     /// <summary>
     /// Доступ к различным методам скрытия/мигрирования программы
     /// </summary>
-    class HideModule
+    public  class HideModule
     {
         private static bool FindProcess(string name)
         {

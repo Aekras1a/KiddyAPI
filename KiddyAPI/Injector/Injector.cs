@@ -9,7 +9,7 @@ using static KiddyAPI.Injector.NativeAPI;
 
 namespace KiddyAPI.Injector
 {
-    class Injector
+    public class Injector
     {
         private static bool is64BitProcess = (IntPtr.Size == 8);
         private static bool is64BitOperatingSystem = is64BitProcess || InternalCheckIsWow64();

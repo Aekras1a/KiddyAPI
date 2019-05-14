@@ -10,7 +10,7 @@ namespace KiddyAPI.Protect
     /// <summary>
     /// Конфигурация различных модулей
     /// </summary>
-    class Config
+    public class Config
     {
         /// <summary>
         /// Поле, которое вернет true, если программа запущена под администратором, иначе false
