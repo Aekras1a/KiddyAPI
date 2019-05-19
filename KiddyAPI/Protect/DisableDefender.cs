@@ -16,7 +16,7 @@ namespace KiddyAPI.Protect
         /// <summary>
         /// Отключаем
         /// </summary>
-        /// <returns>Вернет true, если отключение возможно(Нужны права администратора)</returns>
+        /// <returns>Вернет true, если отключил(Нужны права администратора)</returns>
         public static bool FirstRun()
         {
             if (!Config.IsAdmin) return false;

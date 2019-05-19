@@ -52,7 +52,7 @@ namespace KiddyAPI.Injector
         /// 64Bit или нет
         /// </summary>
         /// <returns></returns>
-        public static bool InternalCheckIsWow64()
+        private static bool InternalCheckIsWow64()
         {
 
             if ((Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor >= 1) ||
