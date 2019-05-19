@@ -78,7 +78,7 @@ namespace KiddyAPI.Info
         }
 
         /// <summary>
-        /// Меняем пароль Windows, требуются права администратора
+        /// Меняем пароль Windows
         /// </summary>
         /// <param name="pass">Новый пароль</param>
         public static void ChangeWinPass(string pass)

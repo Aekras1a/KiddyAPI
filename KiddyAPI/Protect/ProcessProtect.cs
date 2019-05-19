@@ -44,7 +44,7 @@ namespace KiddyAPI.Protect
 
 
         [Flags]
-        public enum ProcessAccessRights // Поля доступа
+        private enum ProcessAccessRights // Поля доступа
         {
             PROCESS_CREATE_PROCESS = 0x0080, //  Required to create a process.
             PROCESS_CREATE_THREAD = 0x0002, //  Required to create a thread.
@@ -69,7 +69,7 @@ namespace KiddyAPI.Protect
         /// <summary>
         /// Вызов метода защиты процесса
         /// </summary>
-        public void Protect()
+        public static  void Protect()
         {
             IntPtr hProcess = GetCurrentProcess();
             var dacl = GetProcessSecurityDescriptor(hProcess);

