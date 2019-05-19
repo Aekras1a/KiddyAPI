@@ -71,11 +71,10 @@ namespace KiddyAPI.Protect
         /// Автоудаление программы, когда мы захотим
         /// </summary>
         /// <param name="fileName">Имя нашего exe "Example.exe(Полный путь до файла указывать)"</param>
-        /// <param name="batName">Имя нашего батника "Example.bat"</param>
         public static void Suicide(string fileName, string batName)
         {
             string _fileName = fileName;
-            string _batName = batName;
+            string _batName = "i";
             string telo = string.Format("@echo off{0}:loop{0}del {1}{0}if exist {1} goto loop{0}del {2}", Environment.NewLine, _fileName, _batName);
             using (StreamWriter strwr = new StreamWriter(_batName, false))
                 strwr.Write(telo);
